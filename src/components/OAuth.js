@@ -16,7 +16,7 @@ export default function OAuth() {
       const result = await signInWithPopup(auth, provider);
       const user= result.user;
 
-      // check for userSelect: 
+      // check if user exists or not and if not add to db: 
 
       const docRef= doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
