@@ -34,7 +34,7 @@ export default function SignIn() {
         navigate("/");
       }
     } catch (error) {
-      toast.error("Bad user credentials");
+      toast.error("Invalid email or password!");
     }
   }
 
@@ -56,7 +56,7 @@ export default function SignIn() {
               id="email"
               value={email}
               onChange={onChange}
-              placeholder="Email address"
+              placeholder="Email"
               className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out"
             />
             <div className="relative mb-6">
