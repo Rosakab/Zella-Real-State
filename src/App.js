@@ -11,6 +11,11 @@ import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./components/PrivateRoute";
 import CreateListing from "./Pages/CreateListing";
 
+
+
+// putting some pat to privateRoute as we don't want to have access to that page 
+//without authorization and access to this pages need to be signed in first.
+
 const App = () => {
   return (
     <div>
@@ -23,10 +28,15 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
           </Route>
 
+          <Route path="create-listing" element={<PrivateRoute />}>
+            <Route path="/create-listing" element={<CreateListing />} />
+          </Route>
+
+
           <Route path="/Sign-in" element={<SignIn />} />
           <Route path="/Sign-up" element={<SignUp />} />
           <Route path="/Offers" element={<Offers />} />
-          <Route path="/create-listing" element={<CreateListing />} />
+         
           <Route path="/Forgot-password" element={<ForgotPassword />} />
         </Routes>
       </BrowserRouter>
