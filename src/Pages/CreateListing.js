@@ -186,13 +186,13 @@ export default function CreateListing() {
             rent
           </button>
         </div>
-        <p className="text-lg mt-6 font-semibold">Name</p>
+        <p className="text-lg mt-6 font-semibold">Home type</p>
         <input
           type="text"
           id="name"
           value={name}
           onChange={onChange}
-          placeholder="Name"
+          placeholder="Home type"
           maxLength="32"
           minLength="10"
           required
