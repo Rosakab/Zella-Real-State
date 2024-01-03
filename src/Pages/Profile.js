@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase";
 import { doc, updateDoc } from "firebase/firestore";
@@ -95,6 +95,13 @@ const Profile = () => {
               </p>
             </div>
           </form>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white  px-7 py-3 text-sm font-medium rounded shadow-md hover:bg-blue-700 "
+          >
+            <Link to="/create-listing">Sell or rent your home</Link>
+          </button>
         </div>
       </section>
     </>

@@ -24,7 +24,7 @@ const Header = () => {
   }
 
   return (
-    <div className="shadow-md bg-gray-200  border-b sticky top-0 z-50">
+    <div className="shadow-md bg-gray-200  border-b sticky top-0 z-40">
       <header className="flex justify-between items-center px-3 max-w-6xl mx-auto ">
         <div>
           <h1
