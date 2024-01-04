@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { HiOutlineShoppingCart } from "react-icons/hi2";
 
 const Header = () => {
   const [pageState, setPageState] = useState("sign in");
@@ -11,9 +12,9 @@ const Header = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setPageState("profile");
+        setPageState("Profile");
       } else {
-        setPageState("sign in");
+        setPageState("Sign in");
       }
     });
   }, [auth]);
@@ -24,43 +25,66 @@ const Header = () => {
   }
 
   return (
-    <div className="shadow-md bg-gray-200  border-b sticky top-0 z-40">
+    <div className="shadow-md bg-black  border-b sticky top-0 z-40">
       <header className="flex justify-between items-center px-3 max-w-6xl mx-auto ">
         <div>
           <h1
-            className="  cursor-pointer text-xl"
+            className="  cursor-pointer text-xl text-white font-semibold"
             onClick={() => navigate("/")}
           >
-            <span className="text-red-600 text-3xl ">Zella</span>Realstate
+            <span className="text-red-600 text-3xl font-bold ">Zella</span>Shop
           </h1>
         </div>
         <div>
           <ul className="flex space-x-10">
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-500 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/") && "text-black  border-b-red-500"
+              className={`cursor-pointer py-3 text-sm font-semibold text-white border-b-[3px] border-b-transparent ${
+                pathMatchRoute("/") && " border-b-red-500"
               }`}
               onClick={() => navigate("/")}
             >
               Home
             </li>
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-500 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/offers") && "text-black border-b-red-500"
+              className={`cursor-pointer py-3 text-sm font-semibold text-white border-b-[3px] border-b-transparent ${
+                pathMatchRoute("/product") && " border-b-red-500"
               }`}
-              onClick={() => navigate("/offers")}
+              onClick={() => navigate("/product")}
             >
-              offers
+              Product
             </li>
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-500 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 text-sm font-semibold text-white border-b-[3px] border-b-transparent ${
                 (pathMatchRoute("/sign-in") || pathMatchRoute("/profile")) &&
-                "text-black border-b-red-500"
+                " border-b-red-500"
               }`}
               onClick={() => navigate("/profile")}
             >
               {pageState}
+            </li>        
+            <li
+              className={`cursor-pointer py-3  text-white border-b-[3px] border-b-transparent ${
+                pathMatchRoute("/basket") && " border-b-red-500"
+              }`}
+              onClick={() => navigate("/basket")}
+            >
+              <HiOutlineShoppingCart size={20}   />
             </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </ul>
         </div>
       </header>

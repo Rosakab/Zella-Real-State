@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import ForgotPassword from "./Pages/ForgotPassword";
-import Offers from "./Pages/Offers";
+import Product from "./Pages/Product";
 import Profile from "./Pages/Profile";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
@@ -9,11 +9,11 @@ import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./components/PrivateRoute";
-import CreateListing from "./Pages/CreateListing";
 
+import Footer from "./components/Footer";
+import Basket from "./Pages/Basket";
 
-
-// putting some pat to privateRoute as we don't want to have access to that page 
+// putting some pat to privateRoute as we don't want to have access to that page
 //without authorization and access to this pages need to be signed in first.
 
 const App = () => {
@@ -22,25 +22,18 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Routes>
+        <Route path="/basket" element={<Basket />} />
           <Route path="/" element={<Home />} />
-
           <Route path="/profile" element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
-
-          <Route path="create-listing" element={<PrivateRoute />}>
-            <Route path="/create-listing" element={<CreateListing />} />
-          </Route>
-
-
           <Route path="/Sign-in" element={<SignIn />} />
           <Route path="/Sign-up" element={<SignUp />} />
-          <Route path="/Offers" element={<Offers />} />
-         
+          <Route path="/Product" element={<Product />} />
           <Route path="/Forgot-password" element={<ForgotPassword />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-
       <ToastContainer
         position="top-center"
         autoClose={5000}
