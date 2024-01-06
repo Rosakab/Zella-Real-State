@@ -63,8 +63,8 @@ export default function SignUp() {
       <div className="flex justify-center flex-wrap items-center px-6 py-12 max-w-6xl mx-auto">
         <div className="md:w-[67%] lg:w-[50%] mb-12 md:mb-6">
           <img
-            src="https://images.pexels.com/photos/8293700/pexels-photo-8293700.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt="key"
+            src="https://images.pexels.com/photos/974911/pexels-photo-974911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="Shopping"
             className="w-full rounded-2xl"
           />
         </div>
@@ -76,7 +76,7 @@ export default function SignUp() {
               value={name}
               onChange={onChange}
               placeholder="Name"
-              className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out"
+              className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded "
             />
             <input
               type="email"
@@ -84,7 +84,7 @@ export default function SignUp() {
               value={email}
               onChange={onChange}
               placeholder="Email"
-              className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out"
+              className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded "
             />
             <div className="relative mb-6">
               <input
@@ -93,7 +93,7 @@ export default function SignUp() {
                 value={password}
                 onChange={onChange}
                 placeholder="Password"
-                className="w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out"
+                className="w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded "
               />
               {showPassword ? (
                 <AiFillEyeInvisible

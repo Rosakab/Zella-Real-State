@@ -9,9 +9,9 @@ import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./components/PrivateRoute";
-
 import Footer from "./components/Footer";
-import Basket from "./Pages/Basket";
+import ShoppingCart from "./Pages/ShoppingCart";
+import CartProvider  from "./context/CartContext";
 
 // putting some pat to privateRoute as we don't want to have access to that page
 //without authorization and access to this pages need to be signed in first.
@@ -19,11 +19,15 @@ import Basket from "./Pages/Basket";
 const App = () => {
   return (
     <div>
+
       <BrowserRouter>
         <Header />
-        <Routes>
-        <Route path="/basket" element={<Basket />} />
-          <Route path="/" element={<Home />} />
+
+        <CartProvider>
+
+          <Routes>
+            <Route path="/shoppingCart" element={<ShoppingCart />} />
+            <Route path="/" element={<Home />} />
           <Route path="/profile" element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
@@ -31,9 +35,14 @@ const App = () => {
           <Route path="/Sign-up" element={<SignUp />} />
           <Route path="/Product" element={<Product />} />
           <Route path="/Forgot-password" element={<ForgotPassword />} />
-        </Routes>
+
+
+          </Routes>
+        </CartProvider>
+        
         <Footer />
       </BrowserRouter>
+
       <ToastContainer
         position="top-center"
         autoClose={5000}

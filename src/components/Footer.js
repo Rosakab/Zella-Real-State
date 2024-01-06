@@ -77,7 +77,7 @@ const Footer = () => {
 
 
       <div className="flex flex-col max-w-[1400px] py-4 px-24 mx-auto justify-between sm:flex-row text-center text-gray-500">
-        <p className="py-4"> 2023 ShopMe.Com, All Rights Reserved.</p>
+        <p className="py-4"> 2023 Zellashop.Com, All Rights Reserved.</p>
         <div className="flex justify-between sm:w-[300px] pt-4 text-2xl px-20">
         <FaFacebookF />
           <FaInstagram />

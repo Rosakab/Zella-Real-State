@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 
+
 const Header = () => {
   const [pageState, setPageState] = useState("sign in");
+ 
   const location = useLocation();
   const navigate = useNavigate();
   const auth = getAuth();
@@ -64,26 +66,13 @@ const Header = () => {
             </li>        
             <li
               className={`cursor-pointer py-3  text-white border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/basket") && " border-b-red-500"
+                pathMatchRoute("/shoppingCart") && " border-b-red-500"
               }`}
-              onClick={() => navigate("/basket")}
+              onClick={() => navigate("/ShoppingCart")}
             >
-              <HiOutlineShoppingCart size={20}   />
+              <HiOutlineShoppingCart size={20} />
+           
             </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           </ul>
         </div>
