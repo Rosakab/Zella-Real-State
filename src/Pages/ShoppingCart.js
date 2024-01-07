@@ -10,82 +10,77 @@ const ShoppingCart = () => {
 
   const handleGetData = async () => {
     let totalPriceValue = 0;
+    let arr = [];
 
     for (let id of cart) {
       const { data } = await axios.get(
         `https://fakestoreapi.com/products/${id}`
       );
-      setList((prevList) => [...prevList, data]);
+      arr.push(data);
       totalPriceValue += data.price;
     }
-
+    setList(arr);
     setTotalPrice(totalPriceValue);
     setTotalItems(cart.length);
   };
 
   useEffect(() => {
     handleGetData();
-  }, [cart]);
+  }, []);
 
   return (
-    <section>
-      <h1 className="text-3xl text-center mt-8 font-bold">Shopping Cart</h1>
-      <div className="flex justify-center  items-center px-6 py-12 max-w-6xl mx-auto">
-        <div className="  md:w-[67%] lg:w-[50%] mb-12 md:mb-6">
-          <p className="     w-full animate-pulse bg-gray-100 mb-4 p-12 text-center font-bold rounded-2xl shadow-xl ">
-            Celebrate with a{" "}
-            <span className="text-red-600 text-lg ">Zellashop</span> Gift Cart
-          </p>
+    <section className="container w-full ">
+      <h1 className="text-3xl text-center mt-8 font-bold underline  decoration-red-600    ">
+        Shopping Cart
+      </h1>
+      <div className="flex justify-center  items-center px-1 py-12 max-w-6xl mx-auto">
+        {/* <div className="hidden md:w-[67%] lg:w-[50%] mb-12 md:mb-6">
+         
 
           <img
             src="https://images.pexels.com/photos/6567607/pexels-photo-6567607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="Shopping"
             className="w-full rounded-2xl shadow-xl "
           />
-          <p className="  w-full animate-pulse bg-gray-100 mt-4 p-12 text-center font-bold rounded-2xl shadow-xl">
-            FREE STANDARD SHIPPING & 60-DAY RETURNS
-          </p>
-        </div>
+        
+        </div> */}
 
-        <div class="flex flex-col p-6 ">
+        <div class="flex flex-col p-4 ">
           {list.map((item) => (
             <div className="flex items-center">
-              <div
-                key={item.id}
-                className="flex flex-none w-24 mb-4  z-10 before:absolute before:top-1 before:left-1 before:w-full before:h-full "
-              >
-                <img src={item.image} alt="" />
+              <div key={item.id} className="flex flex-none w-24 mb-4   ">
+                <img src={item.image} alt="shop" />
               </div>
-              <form className="flex-auto pl-6">
-                <div className=" flex  items-baseline pb-6  before:absolute before:-top-6 before:bottom-0 before:-left-60 before:-right-6">
-                  <h1 className=" w-full flex-none mb-1 text-sm font-bold text-black">
+              <div className=" flex-auto pl-6">
+                <div className="  flex  items-center  pb-6">
+                  <h1 className=" w-full flex-none  text-sm font-bold text-black">
                     {item.title}{" "}
                   </h1>
-                  <h2 className=" ml-3 font-bold text-lg text-black">
+                  <h2 className="  font-bold text-md text-black">
                     ${item.price}
                   </h2>
                 </div>
 
-                <div className="flex space-x-2 mb-4 text-sm font-medium">
+                <div className="flex  mb-4 text-sm font-medium">
                   <div class="flex space-x-4">
                     <button
-                      className="px-4 h-10  text-sm text-gray-700 bg-white border border-gray-300  hover:bg-red-500  rounded"
+                      className="px-4 h-10  text-md text-gray-700  hover:text-white  bg-white border border-gray-300  hover:bg-red-600  rounded"
                       type="button"
                     >
                       Save for later
                     </button>
                     <button
-                      className="px-4 h-10  text-sm text-gray-700 bg-white border border-gray-300  hover:bg-red-500 rounded"
+                      className="px-4 h-10  text-sm text-gray-700 hover:text-white bg-white border border-gray-300  hover:bg-red-600 rounded"
                       type="button"
                     >
                       Delete
                     </button>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           ))}
-          ;
+
           <div className="text-center mt-6">
             <p className="font-bold text-md text-center">
               Total Items: {totalItems}
@@ -94,9 +89,11 @@ const ShoppingCart = () => {
               Total Price: ${totalPrice.toFixed(2)}
             </p>
           </div>
-          <button className="px-4 h-10 mt-2 font-bold text-sm text-black bg-white border border-gray-300  hover:bg-red-500 rounded">
-            Check out{" "}
-          </button>
+          {list.length !== 0 && (
+            <button className="px-8  w-full h-10 mt-4 font-bold text-lg text-black border border-gray-300 bg-red-400 rounded hover:bg-red-600">
+              Check out
+            </button>
+          )}
         </div>
       </div>
     </section>

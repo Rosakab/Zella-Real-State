@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase";
-import {
-  collection,
-  doc,
-  getDocs,
-  orderBy,
-  query,
-  updateDoc,
-  where,
-} from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { getAuth, updateProfile } from "firebase/auth";
-// import ListingItem from "../components/ListingItem";
 
 const Profile = () => {
   const auth = getAuth();
   const navigate = useNavigate();
   const [changeDetail, setChangeDetail] = useState(false);
-  // const [listings, setListings] = useState(null);
-  // const [loading, setLoading] = useState(true);
 
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
@@ -60,7 +49,6 @@ const Profile = () => {
     }
   }
 
-
   return (
     <>
       <section className="max-w-6xl mx-auto flex flex-col items-center justify-center">
@@ -70,7 +58,7 @@ const Profile = () => {
             <input
               type="text"
               id="name"
-              placeholder=""
+              placeholder="Name"
               value={name}
               disabled={!changeDetail}
               onChange={onChange}
@@ -79,16 +67,19 @@ const Profile = () => {
               }`}
             ></input>
             <input
-              type="password"
-              id="password"
+              type="email"
+              id="email"
               value={email}
-              disabled
-              className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded "
+              onChange={onChange}
+              disabled={!changeDetail}
+              className={`mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out ${
+                changeDetail && "bg-red-200 focus:bg-red-200"
+              }`}
             ></input>
             <div className="flex justify-between whitespace-nowrap text-sm md:text-lg mb-6">
               <p className="flex items-center">
                 {" "}
-                Do you want to change your name?{" "}
+                Do you want to edit your profile?{" "}
                 <span
                   onClick={() => {
                     changeDetail && onSubmit();
@@ -112,14 +103,10 @@ const Profile = () => {
             type="submit"
             className="w-full bg-blue-600 text-white  px-7 py-3 text-sm font-medium rounded shadow-md hover:bg-blue-700 "
           >
-            <Link to="/create-listing">Sell or rent your home</Link>
+            <Link to="/create-listing">Submit</Link>
           </button>
         </div>
       </section>
-
-
-
-      
     </>
   );
 };

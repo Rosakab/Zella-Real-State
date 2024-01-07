@@ -13,7 +13,7 @@ import Footer from "./components/Footer";
 import ShoppingCart from "./Pages/ShoppingCart";
 import CartProvider  from "./context/CartContext";
 
-// putting some pat to privateRoute as we don't want to have access to that page
+// putting some path to privateRoute as we don't want to have access to that page
 //without authorization and access to this pages need to be signed in first.
 
 const App = () => {

@@ -22,12 +22,12 @@ const ProductItem = ({ image, title, price, id, handleAddToCart }) => {
       <div className="flex flex-row justify-between">
         <button
           onClick={() => navigate(`/products/${id}`)}
-          className="mb-1 p-1 mr-1 ml-1 bg-gray-500 w-full text-white rounded-r-full shadow-3xl font-semibold pb-2 border-r-4 border-red-900 "
+          className="mb-1 p-1 mr-1 ml-1 bg-gray-500 hover:bg-gray-700 w-full text-white rounded-r-full shadow-3xl font-semibold pb-2 border-r-4 border-red-900 "
         >
           Read More...
         </button>
         <button
-          className="mb-1 p-1 mr-1 ml-1 bg-gray-500 w-full text-white rounded-l-full shadow-3xl font-semibold pb-2 border-l-4 border-red-900"
+          className="mb-1 p-1 mr-1 ml-1 bg-gray-500 hover:bg-gray-700 w-full text-white rounded-l-full shadow-3xl font-semibold pb-2 border-l-4 border-red-900"
           onClick={handleAddCart}
         >
           Add to Cart
